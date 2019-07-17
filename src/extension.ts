@@ -1,37 +1,28 @@
-import * as vscode from 'vscode';
+// The module 'vscode' contains the VS Code extensibility API
+// Import the module and reference it with the alias vscode in your code below
+import * as vscode from "vscode"
 
-let hat: vscode.StatusBarItem;
-
-const hatOptions = [
-	{
-		label: 'Adding functionality',
-	},
-	{
-		label: 'Refactoring',
-	}
-];
-
+// this method is called when your extension is activated
+// your extension is activated the very first time the command is executed
 export function activate(context: vscode.ExtensionContext) {
-	hat = vscode.window.createStatusBarItem(vscode.StatusBarAlignment.Left, -100);
-	context.subscriptions.push(hat);
+  // Use the console to output diagnostic information (console.log) and errors (console.error)
+  // This line of code will only be executed once when your extension is activated
+  console.log('Congratulations, your extension "two-hats" is now active!')
 
-	const putOnAHat = vscode.commands.registerCommand('twoHats.putOnAHat', () => {
-		pickHat(hatOptions);
-		hat.show();
-	});
-	context.subscriptions.push(putOnAHat);
-}
+  // The command has been defined in the package.json file
+  // Now provide the implementation of the command with registerCommand
+  // The commandId parameter must match the command field in package.json
+  let disposable = vscode.commands.registerCommand(
+    "extension.helloWorld",
+    () => {
+      // The code you place here will be executed every time your command is executed
 
-async function pickHat(hats: vscode.QuickPickItem[]) {
-	const chosenHat = await vscode.window.showQuickPick(hats, {
-		placeHolder: 'Pick a hat...',
-	});
+      // Display a message box to the user
+      vscode.window.showInformationMessage("Hello VS Code")
+    },
+  )
 
-	if (!chosenHat) {
-		return;
-	}
-
-	hat.text = chosenHat.label;
+  context.subscriptions.push(disposable)
 }
 
 export function deactivate() {}
