@@ -29,4 +29,16 @@ describe("Putting on a hat", function() {
       td.verify(indicator.setText("a hat from the rack"))
     })
   })
+
+  context("when a hat is not chosen", function() {
+    it("does not update the indicator", async function() {
+      const rack = td.object<Rack>()
+      const indicator = td.object<Indicator>()
+      td.when(rack.chooseHat()).thenResolve(undefined)
+
+      await putOnAHat(rack, indicator)
+
+      td.verify(indicator.setText(td.matchers.anything()), { times: 0 })
+    })
+  })
 })
