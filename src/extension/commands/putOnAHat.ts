@@ -1,5 +1,8 @@
 import { Indicator } from "../types/Indicator"
+import { Rack } from "../types/Rack"
 
-export default function putOnAHat(indicator: Indicator) {
+export default async function putOnAHat(rack: Rack, indicator: Indicator) {
+  const hat = await rack.chooseHat()
+
   indicator.setText("put on a hat")
 }
