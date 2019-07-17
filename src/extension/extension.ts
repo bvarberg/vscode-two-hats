@@ -18,6 +18,7 @@ export function activate(context: vscode.ExtensionContext) {
   ]
   const rack = QuickPickRack.fromHats(hats)
   const indicator = new StatusBarIndicator()
+  context.subscriptions.push(indicator)
 
   const boundPutOnAHat = () => putOnAHat(rack, indicator)
 
