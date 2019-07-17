@@ -1,8 +1,10 @@
-import * as assert from "assert"
-
-suite("Extension Tests", function() {
-  test("Something 1", function() {
-    assert.equal(-1, [1, 2, 3].indexOf(5))
-    assert.equal(-1, [1, 2, 3].indexOf(0))
-  })
+/*
+ * At the time of development, VS Code's testing utilities do not make it
+ * possible to assert on the state of the editor's status bar. Because this
+ * extension uses the status bar user interface exclusively, the lack of access
+ * to it makes end-to-end tests infeasible. Should the testing API change to
+ * support these, consider including such tests.
+ */
+describe("TODO", function() {
+  it("No end-to-end-tests provided")
 })
