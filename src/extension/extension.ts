@@ -1,7 +1,7 @@
 import * as vscode from "vscode"
 import putOnAHat from "./commands/putOnAHat"
-import { StatusBarIndicator } from "./StatusBarIndicator"
 import { QuickPickRack } from "./QuickPickRack"
+import { StatusBarIndicator } from "./StatusBarIndicator"
 
 enum CommandID {
   PutOnAHat = "twoHats.putOnAHat",
