@@ -1,3 +1,3 @@
-type FIXME = any
+import { Indicator } from "../types/Indicator"
 
-export default function putOnAHat(indicator: FIXME) {}
+export default function putOnAHat(indicator: Indicator) {}
