@@ -22,11 +22,11 @@ describe("Putting on a hat", function() {
     it("updates the indicator", async function() {
       const rack = td.object<Rack>()
       const indicator = td.object<Indicator>()
-      td.when(rack.chooseHat()).thenResolve()
+      td.when(rack.chooseHat()).thenResolve("a hat from the rack")
 
       await putOnAHat(rack, indicator)
 
-      td.verify(indicator.setText(td.matchers.isA(String)))
+      td.verify(indicator.setText("a hat from the rack"))
     })
   })
 })

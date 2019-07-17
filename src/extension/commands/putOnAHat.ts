@@ -4,5 +4,7 @@ import { Rack } from "../types/Rack"
 export default async function putOnAHat(rack: Rack, indicator: Indicator) {
   const hat = await rack.chooseHat()
 
-  indicator.setText("put on a hat")
+  if (hat) {
+    indicator.setText(hat)
+  }
 }
