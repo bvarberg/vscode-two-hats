@@ -5,6 +5,6 @@ export default async function putOnAHat(rack: Rack, indicator: Indicator) {
   const hat = await rack.chooseHat()
 
   if (hat) {
-    indicator.setText(hat)
+    indicator.setText(hat.name)
   }
 }

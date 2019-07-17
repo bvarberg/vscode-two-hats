@@ -1,4 +1,5 @@
 import * as td from "testdouble"
+import { Hat } from "../../extension/types/Hat"
 import { Indicator } from "../../extension/types/Indicator"
 import { Rack } from "../../extension/types/Rack"
 
@@ -20,13 +21,14 @@ describe("Putting on a hat", function() {
 
   context("when a hat is chosen", function() {
     it("updates the indicator", async function() {
+      const hat = td.object<Hat>()
       const rack = td.object<Rack>()
       const indicator = td.object<Indicator>()
-      td.when(rack.chooseHat()).thenResolve("a hat from the rack")
+      td.when(rack.chooseHat()).thenResolve(hat)
 
       await putOnAHat(rack, indicator)
 
-      td.verify(indicator.setText("a hat from the rack"))
+      td.verify(indicator.setText(td.matchers.anything()), { times: 1 })
     })
   })
 
@@ -34,7 +36,7 @@ describe("Putting on a hat", function() {
     it("does not update the indicator", async function() {
       const rack = td.object<Rack>()
       const indicator = td.object<Indicator>()
-      td.when(rack.chooseHat()).thenResolve(undefined)
+      td.when(rack.chooseHat()).thenResolve(null)
 
       await putOnAHat(rack, indicator)
 

@@ -1,5 +1,5 @@
-type FIXME = any
+import { Hat } from "./Hat"
 
 export interface Rack {
-  chooseHat(): Promise<FIXME>
+  chooseHat(): Promise<Hat | null>
 }
